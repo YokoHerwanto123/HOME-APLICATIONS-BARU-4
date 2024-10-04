@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+<!--        <title>LOAD LAMP</title> -->
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="layouts">
+            <section class="topbar">
+                <h3>LOAD LAMP</h3>
+            </section>
+            <section class="page-title">
+                <h3>LAMP CONTROL</h3>
+            </section>
+            <section class="Lampu-Dashboard">
+                <div class="Lampu">
+                    <img src="assets/Lampu-Off.png" class="Lampu-image" id="DapurImage" />
+                    <p class="led-location-text">DAPUR</p>
+                    <button class="LampuOn-submit" id="LampuDapur" onclick="sendDataDapur('On')">CLICK ON</button>
+                    <button class="LampuOff-submit" id="LampuDapur" onclick="sendDataDapur('Off')">CLICK OFF</button>
+                </div>
+                <div class="Lampu">
+                    <img src="assets/Lampu-Off.png" class="Lampu-image" id="TerasImage" />
+                    <p class="led-location-text">TERAS</p>
+                    <button class="LampuOn-submit" id="LampuTeras" onclick="sendDataTeras('On')">CLICK ON</button>
+                    <button class="LampuOff-submit" id="LampuTeras" onclick="sendDataTeras('Off')">CLICK OFF</button>
+                </div>
+                <div class="Lampu">
+                    <img src="assets/Lampu-Off.png" class="Lampu-image" id="kamar1Image" />
+                    <p class="led-location-text">KAMAR TIDUR 1</p>
+                    <button class="LampuOn-submit" id="LampuKamar1" onclick="sendDataKamar1('On')">CLICK ON</button>
+                    <button class="LampuOff-submit" id="LampuKamar1" onclick="sendDataKamar1('Off')">CLICK OFF</button>
+                </div>
+                <div class="Lampu">
+                    <img src="assets/Lampu-Off.png" class="Lampu-image" id="kamar2Image" />
+                    <p class="led-location-text">KAMAR TIDUR 2</p>
+                    <button class="LampuOn-submit" id="LampuKamar2" onclick="sendDataKamar2('On')">CLICK ON</button>
+                    <button class="LampuOff-submit" id="LampuKamar2" onclick="sendDataKamar2('Off')">CLICK OFF</button>
+                </div>
+            </section>
+            <section class="bar-bawah">
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="fa-solid fa-home"></i></a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html"><i class="fa-solid fa-gamepad"></i>
+                    </li>
+                    <li>
+                        <a href="about.html"><i class="fa-solid fa-address-card"></i>
+                    </li>
+                    <li>
+                        <a href="Profil.html"><i class="fa-solid fa-user"></i></a>
+                    </li>
+                </ul>
+            </section>
+            <section class ="Kembali-Lampu-Dashboard">
+                <a href="dashboard.html"><i class="fa-solid fa-arrow-left"></i></a>
+            </section>
+<!--            <section class="next">
+                <a href="databaselamp.html"><i class="fa-solid fa-arrow-right"></i></a>
+            </section> -->
+        </div>        
+<!--        <script src="main.js"></script> -->
+        <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+        <script>
+            const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt', {
+                reconnectPeriod: 5000 
+            });
+        
+            client.on('connect', function () {
+                console.log('Connected to MQTT broker');
+                document.getElementById('status').innerText = "Status: terhubung";
+            });
+        
+            client.on('disconnect', function () {
+                console.log('Disconnected from MQTT broker');
+                document.getElementById('status').innerText = "Status: terputus";
+            });
+        
+            client.on('reconnect', function () {
+                console.log('Reconnecting to MQTT broker...');
+                document.getElementById('status').innerText = "Status: Reconnecting...";
+            });
+        
+            function sendDataDapur(message) {
+                if (client.connected) {
+                    client.publish('Dapur', message);
+                    console.log(`Message '${message}' sent to MQTT`);
+                } else {
+                    console.log('Cannot send message, not connected to MQTT broker');
+                }
+            }
+
+            function sendDataTeras(message) {
+                if (client.connected) {
+                    client.publish('Teras', message);
+                    console.log(`Message '${message}' sent to MQTT`);
+                } else {
+                    console.log('Cannot send message, not connected to MQTT broker');
+                }
+            }
+
+            function sendDataKamar1(message) {
+                if (client.connected) {
+                    client.publish('Kamar1', message);
+                    console.log(`Message '${message}' sent to MQTT`);
+                } else {
+                    console.log('Cannot send message, not connected to MQTT broker');
+                }
+            }
+
+            function sendDataKamar2(message) {
+                if (client.connected) {
+                    client.publish('Kamar2', message);
+                    console.log(`Message '${message}' sent to MQTT`);
+                } else {
+                    console.log('Cannot send message, not connected to MQTT broker');
+                }
+            }
+        </script>
+    </body>
+</html>

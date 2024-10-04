@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
+*,
+
+/* Setting html */
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: url('assets/cursor.png'), auto;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+body {
+    margin: 0; /* Menghapus margin default */
+    height: 100%; /* Pastikan html dan body mengisi penuh viewport */
+}
+
+.layouts {
+    width: 476px;
+    margin: 0 auto;
+    min-height: 100vh;
+    border: 1px solid darkblue;
+    position: relative;
+}
+
+.topbar {
+    background-color: darkblue;
+    padding: 16px;
+    text-align: center;
+
+}
+
+.topbar h3 {
+    color: white;
+    font-weight: 800;
+}
+
+
+/* Setting buttom bar bawah */
+.bar-bawah {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: darkblue;
+    width: 100%;
+}
+
+.bar-bawah ul {
+    display: flex;
+    width: 100%;
+    list-style-type: none;
+}
+
+.bar-bawah ul li {
+    flex: 1;
+    text-align: center;
+}
+
+.bar-bawah ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+    display: block;
+}
+
+
+
+/* Setting gambar di index.html */
+.index {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding: 32px;
+    gap: 16px;
+}
+
+
+.item-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    width: 100%;  /* Sesuaikan dengan lebar kontainer */
+    height: 100%;  /* Sesuaikan dengan tinggi kontainer */
+}
+
+.index-image {
+    max-width: 100%;  /* Gambar tidak lebih besar dari lebar kontainer */
+    max-height: 100%;  /* Gambar tidak lebih besar dari tinggi kontainer */
+    object-fit: contain;  /* Menyesuaikan gambar agar tidak terpotong */
+}
+
+
+
+/* Setting gambar di dashboard.html */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding: 32px;
+    gap: 16px;
+}
+
+.item-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px darkblue;
+}
+
+.dashboard-image {
+    width: 50%;
+}
+
+.dashboard-submit {
+    background-color: darkblue;
+    padding: 4px 8px;
+    width: 80%;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Seting About */
+.about {
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px;
+    gap: 16px;
+}
+
+.item-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    height: 50%;  /* Menyesuaikan tinggi item agar sesuai dengan viewport */
+    justify-content: center;  /* Konten di tengah secara vertikal */
+}
+
+.text-column {
+    height: 400px;  /* Batasi tinggi kolom teks */
+    width: 100%;
+    padding: 16px;
+    overflow-y: auto;  /* Izinkan scroll vertikal hanya di dalam kolom teks */
+    background-color: azure;
+    border: 1px solid darkblue;
+    box-shadow: 0px 0px 4px rgba(0, 0, 255, 0.2);
+    margin-left: 5px;
+}
+
+.text-column p {
+    margin: 0 0 16px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .item-about {
+        width: 100%;
+    }
+}
+
+
+
+
+
+/* Tittle Lamp Control */
+.page-title {
+    padding: 16px;
+}
+
+.page-title h3 {
+    text-align: center;
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+/* Setting Lampu */
+.Lampu-Dashboard {
+    display: grid;
+    justify-items: center;
+    max-height: calc(100vh - 200px); /* Menggunakan tinggi berdasarkan viewport */
+    overflow-y: scroll; /* Scroll akan muncul hanya jika diperlukan */
+    padding-bottom: 20px;
+}
+
+.Lampu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px darkblue;
+    height: 400px; 
+    width: 400px;  
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.led-location-text {
+    font-weight: 700;
+}
+
+.Lampu-image {
+    width: 200px;
+    object-fit: cover;
+    height: auto;
+}
+
+.LampuOn-submit {
+    background-color: darkblue;
+    padding: 4px 8px;
+    width: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-left: 5px;
+}
+
+.LampuOff-submit {
+    background-color: darkblue;
+    padding: 4px 8px;
+    width: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+/* Setting panah kembali */
+.Kembali-Lampu-Dashboard a {
+    color: white;
+    position: absolute;
+    text-decoration: none;
+    top: 11px;
+    left: 5%;
+    font-size: x-large;
+    display: block;
+}
+
+
+/* foto profil setting */
+.Foto-Profil {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding: 32px;
+    gap: 16px;
+}
+
+.Foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    flex-grow: 1; /* Membuat foto berkembang untuk mengisi ruang yang tersedia */
+    margin-top: 20px; /* Mengatur jarak dari atas */
+}
+
+.Foto-Location-Text {
+    font-weight: 700;
+}
+
+.FotoProfil-Image {
+    width: 100%;
+    height: auto; /* Mengatur tinggi otomatis untuk menjaga proporsi */
+    max-height: 300px; /* Batasi tinggi gambar agar tidak terlalu besar */
+    object-fit: contain; /* Mengatur gambar agar tidak terpotong */
+}
+
+.profil-name, .profil-nim, .profil-prodi, .profil-univ, .profil-judul {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: black;
+}
+
+/* Menambahkan margin-bottom pada teks untuk jarak antar elemen */
+.profil-name, .profil-nim, .profil-prodi, .profil-univ, .profil-judul {
+    margin-bottom: 8px;
+}
+
+
+
+
+
+

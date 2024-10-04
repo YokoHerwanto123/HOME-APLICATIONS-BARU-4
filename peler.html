@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to MQTT</title>
+</head>
+<body>
+    <h1>Test Satria: HTML ke MQTT</h1>
+    <button onclick="sendData('on')">Kirim Data On</button>
+    <button onclick="sendData('off')">Kirim Data Off</button>
+
+    <div id="status">Status: Disconnected</div>
+</body>
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script>
+    const client = mqtt.connect('ws://broker.hivemq.com:8000/mqtt', {
+        reconnectPeriod: 5000 
+    });
+
+
+    client.on('connect', function () {
+        console.log('Connected to MQTT broker');
+        document.getElementById('status').innerText = "Status: terhubung";
+    });
+
+    client.on('disconnect', function () {
+        console.log('Disconnected from MQTT broker');
+        document.getElementById('status').innerText = "Status: terputus";
+    });
+
+    client.on('reconnect', function () {
+        console.log('Reconnecting to MQTT broker...');
+        document.getElementById('status').innerText = "Status: Reconnecting...";
+    });
+
+    function sendData(message) {
+        if (client.connected) {
+            client.publish('tes/1', message);
+            console.log(`Message '${message}' sent to MQTT`);
+        } else {
+            console.log('Cannot send message, not connected to MQTT broker');
+        }
+    }
+</script>
+</html>
